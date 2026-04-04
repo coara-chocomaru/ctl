@@ -1,0 +1,2 @@
+name=arm64
+cmdline=loop.max_part=4 mmcblk.perdev_minors=16 kvm-arm.mode=nvhe firmware_class.path=/vendor/etc/firmware bootconfig
