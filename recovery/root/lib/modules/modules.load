@@ -13,7 +13,6 @@ pinctrl-sun60iw2-r.ko
 pinctrl-sun60iw2.ko
 sunxi-uart-ng.ko
 timer-sun50i.ko
-sunxi-dump.ko
 rtc-sunxi.ko
 i2c-dev.ko
 twi-sunxi.ko

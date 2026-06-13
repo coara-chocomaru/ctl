@@ -20,7 +20,6 @@
 /lib/modules/clk-debugfs.ko:
 /lib/modules/pm_domains.ko:
 /lib/modules/sunxi_virtual_consumer.ko:
-/lib/modules/sunxi-dump.ko: /lib/modules/sunxidrm.ko /lib/modules/edp_general_panel.ko /lib/modules/panel-lvds.ko /lib/modules/panel-dsi.ko /lib/modules/drm_display_helper.ko /lib/modules/sunxi-iommu.ko /lib/modules/drm_dma_helper.ko /lib/modules/sunxi_drm_phy.ko /lib/modules/sunxi-sid.ko /lib/modules/sunxi-smc.ko
 /lib/modules/bootevent.ko:
 /lib/modules/pinctrl-sun60iw2-r.ko: /lib/modules/pinctrl-sunxi.ko
 /lib/modules/tee.ko:
@@ -36,7 +35,7 @@
 /lib/modules/ccu-ddr.ko:
 /lib/modules/sunxi_addr.ko: /lib/modules/sunxi-sid.ko /lib/modules/sunxi-smc.ko
 /lib/modules/sunxi_amu_cpufreq.ko:
-/lib/modules/sunxi-dsufreq.ko: /lib/modules/cpufreq-dt.ko /lib/modules/sunxi-dump.ko /lib/modules/sunxidrm.ko /lib/modules/edp_general_panel.ko /lib/modules/panel-lvds.ko /lib/modules/panel-dsi.ko /lib/modules/drm_display_helper.ko /lib/modules/sunxi-iommu.ko /lib/modules/drm_dma_helper.ko /lib/modules/sunxi_drm_phy.ko /lib/modules/sun50i-cpufreq-nvmem.ko /lib/modules/sunxi-sid.ko /lib/modules/sunxi-smc.ko
+/lib/modules/sunxi-dsufreq.ko: /lib/modules/cpufreq-dt.ko /lib/modules/sun50i-cpufreq-nvmem.ko /lib/modules/sunxi-sid.ko /lib/modules/sunxi-smc.ko
 /lib/modules/timer-sun50i.ko:
 /lib/modules/axp2101.ko:
 /lib/modules/axp515_battery.ko: /lib/modules/axp2101.ko /lib/modules/sunxi-power-notifier.ko
@@ -45,7 +44,7 @@
 /lib/modules/ccu-sun60iw2.ko: /lib/modules/ccu-sunxi-ng.ko
 /lib/modules/zsmalloc.ko:
 /lib/modules/spi-sunxi-ng.ko:
-/lib/modules/cpufreq-dt.ko: /lib/modules/sunxi-dump.ko /lib/modules/sunxidrm.ko /lib/modules/edp_general_panel.ko /lib/modules/panel-lvds.ko /lib/modules/panel-dsi.ko /lib/modules/drm_display_helper.ko /lib/modules/sunxi-iommu.ko /lib/modules/drm_dma_helper.ko /lib/modules/sunxi_drm_phy.ko /lib/modules/sunxi-sid.ko /lib/modules/sunxi-smc.ko
+/lib/modules/cpufreq-dt.ko:
 /lib/modules/system_heap.ko:
 /lib/modules/pck600_domains.ko:
 /lib/modules/pinctrl-sun60iw2.ko: /lib/modules/pinctrl-sunxi.ko /lib/modules/sunxi-sid.ko /lib/modules/sunxi-smc.ko
