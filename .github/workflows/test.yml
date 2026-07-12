@@ -104,15 +104,15 @@ jobs:
         repo init --depth=1 -u ${{ github.event.inputs.MANIFEST_URL }} -b ${{ github.event.inputs.MANIFEST_BRANCH }}
       id: pwd
 
-    - name: Repo Sync
-      run: |
-        repo sync -j$(nproc --all) --force-sync
-      working-directory: workspace
-
     - name: Clone device tree
       run: |
         git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
+
+    - name: Repo Sync
+      run: |
+        repo sync -j$(nproc --all) --force-sync
+      working-directory: workspace
 
     - name: Clone common tree
       if: |
