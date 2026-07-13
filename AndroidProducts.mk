@@ -3,4 +3,4 @@
 # Copyright (C) 2023 The Team Win Recovery Project
 #
 PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_CTL2.mk
-COMMON_LUNCH_CHOICES := twrp_CTL2-eng
+COMMON_LUNCH_CHOICES := twrp_CTL2-userdebug-eng
