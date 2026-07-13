@@ -1,5 +1,8 @@
 LOCAL_PATH := device/benesse/ctl2
 
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
 # API
 PRODUCT_SHIPPING_API_LEVEL := 34
 PRODUCT_TARGET_VNDK_VERSION := 34
@@ -91,6 +94,3 @@ RECOVERY_BINARY_SOURCE_FILES += \
     $(TARGET_OUT_EXECUTABLES)/android.hardware.boot@1.2-service
 
 PRODUCT_PROPERTY_OVERRIDES += ro.twrp.vendor_boot=true
-
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
