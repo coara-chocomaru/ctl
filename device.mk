@@ -1,4 +1,4 @@
-LOCAL_PATH := device/benesse/CTL2
+LOCAL_PATH := device/benesse/ctl2
 
 
 # API
