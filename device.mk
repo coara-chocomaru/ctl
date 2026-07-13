@@ -1,7 +1,5 @@
-LOCAL_PATH := device/benesse/ctl2
+LOCAL_PATH := device/benesse/CTL2
 
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 34
@@ -94,3 +92,6 @@ RECOVERY_BINARY_SOURCE_FILES += \
     $(TARGET_OUT_EXECUTABLES)/android.hardware.boot@1.2-service
 
 PRODUCT_PROPERTY_OVERRIDES += ro.twrp.vendor_boot=true
+
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
