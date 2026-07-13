@@ -32,11 +32,11 @@ on:
       DEVICE_NAME:
         description: 'DEVICE_NAME'
         required: true
-        default: 'ctl2'
+        default: 'CTL2'
       MAKEFILE_NAME:
         description: 'MAKEFILE_NAME'
         required: true
-        default: 'twrp_ctl2'
+        default: 'twrp_CTL2'
       BUILD_TARGET:
         description: 'BUILD_TARGET'
         required: true
@@ -133,7 +133,7 @@ jobs:
       run: |
          source build/envsetup.sh
          export ALLOW_MISSING_DEPENDENCIES=true
-         lunch ${{ github.event.inputs.MAKEFILE_NAME }}-50S904-eng && make clean && make ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
+         lunch ${{ github.event.inputs.MAKEFILE_NAME }}-ap2a-eng && make clean && make ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
   
     - name: Upload to Release
