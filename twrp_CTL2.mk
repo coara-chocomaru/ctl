@@ -1,10 +1,13 @@
 $(call inherit-product, device/benesse/ctl2/device.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
+
 PRODUCT_DEVICE := CTL2
 PRODUCT_NAME := twrp_$(PRODUCT_DEVICE)
 PRODUCT_BRAND := Benesse
 PRODUCT_MODEL := 50S904
 PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
 PRODUCT_RELEASE_NAME := CTL2
+PRODUCT_PLATFORM := Allwinne
 PRODUCT_GMS_CLIENTID_BASE := android-$(PRODUCT_MANUFACTURER)
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="a733_pro3_arm64-user 14 UP1A.231105.001.A1 20260414 release-keys"
@@ -18,4 +21,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
-$(call inherit-product, vendor/twrp/config/common.mk)
