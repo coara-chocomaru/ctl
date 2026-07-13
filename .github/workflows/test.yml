@@ -106,9 +106,10 @@ jobs:
 
     - name: Clone device tree
       run: |
-        git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
+           rm -rf device/benesse/ctl2
+           git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} device/benesse/ctl2 --depth=1
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
-
+  
     - name: Repo Sync
       run: |
         repo sync -j$(nproc --all) --force-sync
