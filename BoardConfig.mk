@@ -142,7 +142,7 @@ BOARD_USES_GENERIC_KERNEL_IMAGE := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 RECOVERY_SDCARD_ON_DATA := true
-ARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # display
 TARGET_SCREEN_DENSITY := 240
