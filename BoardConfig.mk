@@ -1,4 +1,4 @@
-DEVICE_PATH := device/benesse/ctl2
+DEVICE_PATH := device/benesse/CTL2
 TARGET_DEVICE := CTL2
 # buildoption
 OVERRIDE_TARGET_FLATTEN_APEX := true
