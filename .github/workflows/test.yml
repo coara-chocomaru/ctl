@@ -114,7 +114,11 @@ jobs:
                path="device/benesse/ctl2"
                remote="github"
                revision="main" />
-         </manifest>
+            <project name="platform/build/release"
+               path="build/release"
+               remote="aosp"
+               revision="main" />
+          </manifest>
          EOF
          cat .repo/local_manifests/roomservice.xml
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
