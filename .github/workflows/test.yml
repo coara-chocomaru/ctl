@@ -166,6 +166,47 @@ jobs:
         cat device/benesse/ctl2/vendorsetup.sh 2>/dev/null || echo "vendorsetup.sh not found"
         echo
 
+        echo "========================================"
+        echo "build/release"
+        echo "========================================"
+
+        ls -la build || true
+        echo
+
+        ls -la build/release || true
+        echo
+
+        find build/release -maxdepth 2 -type f | sort || true
+        echo
+
+        echo "===== release_config_map.mk ====="
+        cat build/release/release_config_map.mk || true
+        echo
+
+        echo "===== build_config ====="
+        find build/release/build_config -maxdepth 1 -type f | sort || true
+        echo
+
+        echo "===== ap2a.scl ====="
+        cat build/release/build_config/ap2a.scl || true
+        echo
+
+        echo "========================================"
+        echo "Git information"
+        echo "========================================"
+
+        if [ -d build/release/.git ]; then
+          cd build/release
+          git remote -v
+          git branch -a
+          git rev-parse HEAD
+          git log -1 --oneline
+          cd ../..
+        else
+          echo "build/release is not a git repository"
+        fi
+        echo
+
         export ALLOW_MISSING_DEPENDENCIES=true
         export TARGET_PRODUCT=twrp_CTL2
         export TARGET_RELEASE=ap2a
@@ -179,43 +220,10 @@ jobs:
 
         echo
         echo "========================================"
-        echo "Available lunch combinations"
+        echo "Lunch menu"
         echo "========================================"
 
         print_lunch_menu || true
-
-        echo
-        echo "========================================"
-        echo "COMMON_LUNCH_CHOICES"
-        echo "========================================"
-
-        TARGET_BUILD_APPS= \
-        TARGET_PRODUCT= \
-        TARGET_RELEASE= \
-        TARGET_BUILD_VARIANT= \
-        _get_build_var_cached COMMON_LUNCH_CHOICES || true
-
-        echo
-        echo "========================================"
-        echo "PRODUCT_MAKEFILES"
-        echo "========================================"
-
-        TARGET_BUILD_APPS= \
-        TARGET_PRODUCT= \
-        TARGET_RELEASE= \
-        TARGET_BUILD_VARIANT= \
-        _get_build_var_cached PRODUCT_MAKEFILES || true
-
-        echo
-        echo "========================================"
-        echo "TARGET_DEVICE"
-        echo "========================================"
-
-        TARGET_BUILD_APPS= \
-        TARGET_PRODUCT= \
-        TARGET_RELEASE= \
-        TARGET_BUILD_VARIANT= \
-        _get_build_var_cached TARGET_DEVICE || true
 
         echo
         echo "========================================"
