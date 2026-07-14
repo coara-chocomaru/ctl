@@ -108,21 +108,21 @@ jobs:
       run: |
          mkdir -p .repo/local_manifests
          cat > .repo/local_manifests/roomservice.xml << 'EOF'
-         <?xml version="1.0" encoding="UTF-8"?>
-         <manifest>
-           <project name="coara-chocomaru/ctl"
-               path="device/benesse/ctl2"
-               remote="github"
-               revision="main" />
-            <project name="platform/build/release"
-               path="build/release"
-               remote="aosp"
-               revision="main" />
+          <manifest>
+         <project
+            name="coara-chocomaru/ctl"
+            path="device/benesse/ctl2"
+            remote="github"
+            revision="main" />
+         <project
+            name="platform/build/release"
+            path="build/release"
+            remote="aosp"
+            revision="android-14.0.0_r50" />     
           </manifest>
          EOF
          cat .repo/local_manifests/roomservice.xml
-      working-directory: ${{ steps.pwd.outputs.workspace-folder }}
-      
+      working-directory: ${{ steps.pwd.outputs.workspace-folder }}      
     - name: Repo Sync
       run: |
           repo sync -c -j$(nproc --all) --force-sync --optimized-fetch --prune
