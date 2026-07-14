@@ -104,25 +104,26 @@ jobs:
         repo init --depth=1 -u ${{ github.event.inputs.MANIFEST_URL }} -b ${{ github.event.inputs.MANIFEST_BRANCH }}
       id: pwd
 
-    - name: Create local manifest
+    - name: Setup Local Manifest for Device Tree
       run: |
-       mkdir -p .repo/local_manifests
-       cat > .repo/local_manifests/roomservice.xml <<EOF
-       <?xml version="1.0" encoding="UTF-8"?>
-       <manifest>
-       <project name="coara-chocomaru/ctl" 
-               path="device/benesse/ctl2" 
-               remote="github" 
+         mkdir -p .repo/local_manifests
+         cat > .repo/local_manifests/roomservice.xml << 'EOF'
+         <?xml version="1.0" encoding="UTF-8"?>
+         <manifest>
+           <project name="coara-chocomaru/ctl"
+               path="device/benesse/ctl2"
+               remote="github"
                revision="main" />
          </manifest>
-       EOF
+         EOF
+         cat .repo/local_manifests/roomservice.xml
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
       
     - name: Repo Sync
       run: |
-        repo sync -j$(nproc --all) --force-sync
-      working-directory: workspace
-
+          repo sync -c -j$(nproc --all) --force-sync --optimized-fetch --prune
+      working-directory: ${{ steps.pwd.outputs.workspace-folder }}
+      
     - name: Clone common tree
       if: |
         github.event.inputs.COMMON_TREE_URL != null
