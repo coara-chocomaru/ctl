@@ -146,18 +146,93 @@ jobs:
 
     - name: Building recovery
       run: |
-        echo "=== Device Tree Check ==="
+        set -e
+
+        echo "========================================"
+        echo "Device Tree Check"
+        echo "========================================"
+
         ls -la device/benesse/ctl2/
+        echo
+
         ls -la device/benesse/ctl2/*.mk 2>/dev/null || echo "No .mk files found!"
+        echo
+
+        echo "===== AndroidProducts.mk ====="
         cat device/benesse/ctl2/AndroidProducts.mk 2>/dev/null || echo "AndroidProducts.mk not found"
+        echo
+
+        echo "===== vendorsetup.sh ====="
+        cat device/benesse/ctl2/vendorsetup.sh 2>/dev/null || echo "vendorsetup.sh not found"
+        echo
+
+        export ALLOW_MISSING_DEPENDENCIES=true
         export TARGET_PRODUCT=twrp_CTL2
         export TARGET_RELEASE=ap2a
         export TARGET_BUILD_VARIANT=eng
-        source build/envsetup.sh
-        export ALLOW_MISSING_DEPENDENCIES=true
-        lunch ${{ github.event.inputs.MAKEFILE_NAME }}-ap2a-eng && make clean && mka ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
-      working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
+        echo "========================================"
+        echo "source build/envsetup.sh"
+        echo "========================================"
+
+        source build/envsetup.sh
+
+        echo
+        echo "========================================"
+        echo "Available lunch combinations"
+        echo "========================================"
+
+        print_lunch_menu || true
+
+        echo
+        echo "========================================"
+        echo "COMMON_LUNCH_CHOICES"
+        echo "========================================"
+
+        TARGET_BUILD_APPS= \
+        TARGET_PRODUCT= \
+        TARGET_RELEASE= \
+        TARGET_BUILD_VARIANT= \
+        _get_build_var_cached COMMON_LUNCH_CHOICES || true
+
+        echo
+        echo "========================================"
+        echo "PRODUCT_MAKEFILES"
+        echo "========================================"
+
+        TARGET_BUILD_APPS= \
+        TARGET_PRODUCT= \
+        TARGET_RELEASE= \
+        TARGET_BUILD_VARIANT= \
+        _get_build_var_cached PRODUCT_MAKEFILES || true
+
+        echo
+        echo "========================================"
+        echo "TARGET_DEVICE"
+        echo "========================================"
+
+        TARGET_BUILD_APPS= \
+        TARGET_PRODUCT= \
+        TARGET_RELEASE= \
+        TARGET_BUILD_VARIANT= \
+        _get_build_var_cached TARGET_DEVICE || true
+
+        echo
+        echo "========================================"
+        echo "Executing lunch"
+        echo "========================================"
+
+        lunch ${{ github.event.inputs.MAKEFILE_NAME }}-ap2a-eng
+
+        echo
+        echo "========================================"
+        echo "Build"
+        echo "========================================"
+
+        make clean
+        mka ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
+      working-directory: ${{ steps.pwd.outputs.workspace-folder }}
+      
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
