@@ -143,6 +143,20 @@ jobs:
       uses: pierotofy/set-swap-space@master
       with:
         swap-size-gb: 12
+        
+    - name: Dump manifest
+      run: |
+        echo "===== default.xml ====="
+        cat .repo/manifests/default.xml
+
+        echo
+        echo "===== release project ====="
+        grep -n "build/release" .repo/manifests/default.xml || true
+
+        echo
+        echo "===== build projects ====="
+        grep -n "path=\"build" .repo/manifests/default.xml || true
+      working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
     - name: Building recovery
       run: |
