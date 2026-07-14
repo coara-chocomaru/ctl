@@ -4,3 +4,4 @@
 #
 DEVICE_PATH := device/benesse/ctl2
 PRODUCT_MAKEFILES := $(DEVICE_PATH)/twrp_CTL2.mk
+COMMON_LUNCH_CHOICES := twrp_CTL2-ap2a-eng
