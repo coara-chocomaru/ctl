@@ -147,6 +147,10 @@ jobs:
 
     - name: Building recovery
       run: |
+        echo "=== Device Tree Check ==="
+        ls -la device/benesse/ctl2/
+        ls -la device/benesse/ctl2/*.mk 2>/dev/null || echo "No .mk files found!"
+        cat device/benesse/ctl2/AndroidProducts.mk 2>/dev/null || echo "AndroidProducts.mk not found"
         export TARGET_PRODUCT=twrp_CTL2
         export TARGET_RELEASE=ap2a
         export TARGET_BUILD_VARIANT=eng
