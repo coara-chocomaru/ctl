@@ -118,7 +118,7 @@ jobs:
             name="platform/build/release"
             path="build/release"
             remote="aosp"
-            revision="android-14.0.0_r50" />     
+            revision="refs/tags/android-14.0.0_r50" />
           </manifest>
          EOF
          cat .repo/local_manifests/roomservice.xml
