@@ -104,12 +104,20 @@ jobs:
         repo init --depth=1 -u ${{ github.event.inputs.MANIFEST_URL }} -b ${{ github.event.inputs.MANIFEST_BRANCH }}
       id: pwd
 
-    - name: Clone device tree
+    - name: Create local manifest
       run: |
-           rm -rf device/benesse/ctl2
-           git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} device/benesse/ctl2 --depth=1
+       mkdir -p .repo/local_manifests
+       cat > .repo/local_manifests/roomservice.xml <<EOF
+       <?xml version="1.0" encoding="UTF-8"?>
+       <manifest>
+       <project name="coara-chocomaru/ctl" 
+               path="device/benesse/ctl2" 
+               remote="github" 
+               revision="main" />
+         </manifest>
+       EOF
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
-  
+      
     - name: Repo Sync
       run: |
         repo sync -j$(nproc --all) --force-sync
