@@ -245,8 +245,8 @@ jobs:
         echo "Executing lunch"
         echo "========================================"
 
-        lunch ${{ github.event.inputs.MAKEFILE_NAME }}-ap2a-eng
-
+        lunch twrp_CTL2-ap2a-eng
+        
         echo
         echo "========================================"
         echo "Build"
