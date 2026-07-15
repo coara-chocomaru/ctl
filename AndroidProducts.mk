@@ -1,5 +1,3 @@
-LOCAL_DIR := $(call my-dir)
-
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_CTL2.mk
 
