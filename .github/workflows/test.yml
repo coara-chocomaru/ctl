@@ -123,6 +123,12 @@ jobs:
          EOF
          cat .repo/local_manifests/roomservice.xml
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}      
+    
+    - name: Set Swap Space
+      uses: pierotofy/set-swap-space@master
+      with:
+        swap-size-gb: 24
+    
     - name: Repo Sync
       run: |
           repo sync -c -j$(nproc --all) --force-sync --optimized-fetch --prune
@@ -143,11 +149,6 @@ jobs:
         cond: ${{ github.event.inputs.MANIFEST_BRANCH == 'twrp-14' || github.event.inputs.MANIFEST_BRANCH == 'twrp-14.1' }}
         if_true: twrp
         if_false: omni
-
-    - name: Set Swap Space
-      uses: pierotofy/set-swap-space@master
-      with:
-        swap-size-gb: 12
         
     - name: Dump manifest
       run: |
