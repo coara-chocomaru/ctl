@@ -2,12 +2,12 @@ PRODUCT_RELEASE_CONFIG_MAPS += device/benesse/ctl2/release/release_config_map.te
 $(call inherit-product, device/benesse/ctl2/device.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
-PRODUCT_DEVICE := CTL2
-PRODUCT_NAME := twrp_$(PRODUCT_DEVICE)
+PRODUCT_DEVICE := ctl2
+PRODUCT_NAME := twrp_ctl2
 PRODUCT_BRAND := Benesse
-PRODUCT_MODEL := CTL2
-PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
-PRODUCT_RELEASE_NAME := CTL2
+PRODUCT_MODEL := 50S904
+PRODUCT_MANUFACTURER := Benesse
+PRODUCT_RELEASE_NAME := CTL2_50S904
 PRODUCT_PLATFORM := jupiter
 PRODUCT_GMS_CLIENTID_BASE := android-$(PRODUCT_MANUFACTURER)
 PRODUCT_BUILD_PROP_OVERRIDES += \
