@@ -1,5 +1,5 @@
 LOCAL_PATH := device/benesse/ctl2
-
+include $(LOCAL_PATH)/BoardConfig.mk
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 34
