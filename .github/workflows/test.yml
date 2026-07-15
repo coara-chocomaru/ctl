@@ -114,11 +114,6 @@ jobs:
             path="device/benesse/ctl2"
             remote="github"
             revision="main" />
-          <project
-            name="platform/build/release"
-            path="build/release"
-            remote="aosp"
-            revision="refs/tags/android-14.0.0_r17" />
           </manifest>
          EOF
          cat .repo/local_manifests/roomservice.xml
