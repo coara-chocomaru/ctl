@@ -119,7 +119,7 @@ jobs:
     - name: Apply Folder Patch
       working-directory: workspace
       run: |
-        cp -rf device/benesse/ctl2/recovery/root device/benesse/ctl2/
+        cp -rf device/benesse/ctl2/recovery/root out/target/product/ctl2/
     
     - name: Clone common tree
       if: |
