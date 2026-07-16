@@ -115,6 +115,11 @@ jobs:
       run: |
         git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
+
+    - name: Apply Folder Patch
+      working-directory: workspace
+      run: |
+        cp -rf device/benesse/ctl2/recovery/root device/benesse/ctl2/
     
     - name: Clone common tree
       if: |
