@@ -62,13 +62,11 @@ jobs:
         echo "Build Target: ${{ github.event.inputs.BUILD_TARGET }}.img"
         echo "::endgroup::"
  
-    # You might want to Checkout your repo first, but not mandatory
     - name: Check Out
-      uses: actions/checkout@v3
-    # Cleanup The Actions Workspace Using Custom Composite Run Actions
+      uses: actions/checkout@v4
+
     - name: Cleanup
       uses: rokibhasansagar/slimhub_actions@main
-      # That's it! Now use your normal steps
 
     - name: Prepare the environment
       run: |
@@ -83,7 +81,7 @@ jobs:
         java-version: '8'
 
     - name: Setup SSH Keys
-      if: ${{ startsWith(github.event.inputs.MANIFEST_URL, 'git@github.com') }}
+      if: startsWith(github.event.inputs.MANIFEST_URL, 'git@github.com')
       uses: webfactory/ssh-agent@v0.5.4
       with:
           ssh-private-key: |
@@ -116,16 +114,8 @@ jobs:
         git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
-    - name: Apply Folder Patch
-      working-directory: workspace
-      run: |
-        mkdir -p out/target/product/ctl2/
-        cp -rf device/benesse/ctl2/recovery/root out/target/product/ctl2/
-    
     - name: Clone common tree
-      if: |
-        github.event.inputs.COMMON_TREE_URL != null
-        && github.event.inputs.COMMON_PATH != null
+      if: github.event.inputs.COMMON_TREE_URL != '' && github.event.inputs.COMMON_PATH != ''
       run: |
         git clone ${{ github.event.inputs.COMMON_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.COMMON_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
@@ -135,12 +125,15 @@ jobs:
       with:
         swap-size-gb: 24
 
-    - name: Building recovery
+    - name: Build recovery
       run: |
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         lunch twrp_ctl2-ap2a-eng
         make clean
+        # Now copy the recovery root after clean so it is not wiped
+        mkdir -p out/target/product/ctl2/
+        cp -rf device/benesse/ctl2/recovery/root out/target/product/ctl2/
         make ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
@@ -154,6 +147,6 @@ jobs:
           Manifest: ${{ github.event.inputs.MANIFEST_BRANCH }}
           Device: ${{ github.event.inputs.DEVICE_NAME }}
           Target: vendor_boot.img
-          Version:Android14
+          Version: Android14
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
