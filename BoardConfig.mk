@@ -1,4 +1,6 @@
 DEVICE_PATH := device/benesse/ctl2
+
+
 # buildoption
 OVERRIDE_TARGET_FLATTEN_APEX := true
 ALLOW_MISSING_DEPENDENCIES := true
@@ -6,8 +8,6 @@ BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
 BUILD_BROKEN_NINJA_USES_ENV_VARS += RTIC_MPGEN
-
-# Soong plugin validation (required for TWRP)
 BUILD_BROKEN_PLUGIN_VALIDATION := soong-libaosprecovery_defaults soong-libguitwrp_defaults soong-libminuitwrp_defaults soong-vold_defaults
 DISABLE_ARTIFACT_PATH_REQUIREMENTS := true
 ENABLE_CPUSETS := true
