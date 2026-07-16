@@ -57,7 +57,7 @@ TARGET_NO_KERNEL := true
 TW_LOAD_VENDOR_BOOT_MODULES := true
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebulid/dtb
 BOARD_VENDOR_CMDLINE := loop.max_part=4 mmcblk.perdev_minors=16 kvm-arm.mode=nvhe firmware_class.path=/vendor/etc/firmware bootconfig
 BOARD_KERNEL_BASE := 0x40000000
 BOARD_PAGE_SIZE := 2048
