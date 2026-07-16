@@ -1,4 +1,3 @@
-PRODUCT_RELEASE_CONFIG_MAPS += device/benesse/ctl2/release/release_config_map.textproto
 $(call inherit-product, device/benesse/ctl2/device.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
