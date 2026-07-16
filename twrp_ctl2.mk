@@ -1,6 +1,11 @@
 $(call inherit-product, device/benesse/ctl2/device.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+
+
 PRODUCT_DEVICE := ctl2
 PRODUCT_NAME := twrp_ctl2
 PRODUCT_BRAND := Benesse
