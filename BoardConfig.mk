@@ -85,6 +85,12 @@ BOARD_RAMDISK_USE_LZ4 := true
 
 # AVB
 BOARD_AVB_ENABLE := true
+BOARD_AVB_VENDOR_BOOT_ADD_HASH_FOOTER_ARGS += \
+    --hash_algorithm sha256 \
+    --salt a3d498896141cd5e85f867f17bacc469a95a8d06825c0b52dc82fdfdde52ce91 \
+    --prop com.android.build.vendor_boot.fingerprint:$(BUILD_FINGERPRINT_FROM_FILE) \
+    --algorithm NONE
+
 
 #security
 PLATFORM_SECURITY_PATCH := 2025-02-05
